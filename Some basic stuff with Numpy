@@ -1,0 +1,75 @@
+!python --version
+for number in 10,15:
+  for counter in range(1,3): 
+    print(number*counter, end=" ")
+x,y,z = 1,2,3
+print("")
+print(x,y,z)
+
+#Assignment 1 (28-01-2021)
+import random
+AI = input("Enter your airline : ")
+source = input("Enter your boarding point : ")
+destination = input("Enter your destination : ")
+number_of_passengers = random.randint(1,10)
+
+print("The number of passengers is '",number_of_passengers,"'.\n")
+tickets = []
+
+for i in range(1,number_of_passengers+1):
+  token = AI +':'+ source[:3] +':'+ destination[:3]+':'+str(100+i) 
+  tickets.append(token)
+if (number_of_passengers >= 5):
+  print(tickets[:-6:-1].sort())
+else:
+  print(tickets)
+  
+# The real code begins from here :  
+
+import numpy as np
+import random
+
+x = np.array([1,2,3,4,15])
+y = np.cumsum(x)
+np.searchsorted(y,11)
+
+import pandas as pd
+
+a = [1,4,5]
+my_var = pd.Series(a,index=range(100,103),dtype=complex)
+print(my_var)
+
+cric_data = np.loadtxt("cric_data.tsv", skiprows=1)
+
+Sachin = cric_data[:,1] 
+Dravid = cric_data[:,2] 
+India = cric_data[:,3] 
+
+# Find the Mean and Median of Sachin, Dravid and India.
+def stats(col):
+  print('Mean score : ', np.mean(col))
+  print('Median score : ', np.median(col))
+  print("\n")
+
+stats(Sachin)
+stats(Dravid)
+stats(India)
+
+# How many centuries did Sachin and Dravid Score?
+
+print("Centuries scored by Sachin : " , np.count_nonzero(Sachin>99) )
+print("Centuries scored by Dravid : " , np.count_nonzero(Dravid>99) )
+
+# How many matches did Sachin and Dravid take to reach 1000 runs?
+
+sachin_cumscores = np.cumsum(Sachin)
+print("Number of matches taken by Sachin to reach 1000 runs : ", np.searchsorted(sachin_cumscores, 1000))
+
+dravid_cumscores = np.cumsum(Dravid)
+print("Number of matches taken by Dravid to reach 1000 runs : ", np.searchsorted(dravid_cumscores, 1000))
+
+
+# For every match find out who has scored more — Sachin or Dravid
+Sachin_and_Dravid = cric_data[:, 1:3]
+is_dravid_higher = np.argmax(Sachin_and_Dravid, axis = 1)
+np.where(is_dravid_higher == 0, 'Sachin', 'Dravid')
