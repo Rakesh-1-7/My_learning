@@ -1,0 +1,37 @@
+import turtle
+t = turtle.Turtle()
+turtle.Screen().bgcolor("black") 
+
+def square(x,y="black"):
+  t.shape("turtle")
+  t.color(y)
+  t.speed(0)
+  for i in range(4):
+    t.fd(x)
+    t.lt(90) 
+  t.lt(11)
+
+# #add8e6 - Light Blue
+# #ff4500 - Orange Red
+
+# for i in range(30):
+#   square(150,"yellow") 
+
+  # square(100,"red")
+t.speed(0)
+t.pensize(1)
+for i in range(400):
+  if(i%3==0):
+    t.pencolor("#006994 ")
+    t.fd(i*1.5)
+    t.rt(189)
+  elif(i%3==1):
+    t.pencolor("Blue")
+    t.fd(i*1.5)
+    t.rt(189)
+  else:
+    t.pencolor("Purple ")
+    t.fd(i*1.5)
+    t.rt(189)
+
+  
